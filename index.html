@@ -197,185 +197,47 @@ function loop() {
   var aid = aposx+(aposy*25);
   console.log(id);
   pos[id] = 1;
-  if (((posy+1) % 2 == 0 || posy == 0) && posy > 2){
-	if (((25*(posy+1))+((25*(posy+1))-id)) < (aid-5) && (625-(((25*posy)+((25*posy)-id)+1))) > (snake.cells.length + 2) && snake.dy === 0){
-		down();
-		console.log("ffs");
-	}
-  }else if ((posy+1) % 2 != 0 && posy > 2){
-	if (((25*(posy+1))+((25*(posy+1))-id)+100) < (aid-5) && (625-(((25*posy)+((25*posy)-id)+101))) > (snake.cells.length + 2) && snake.dy === 0){
-		down();
-		console.log("second");
-	}else if (posx < 25 && posx > 1 && posy < 24 && posy > 1){
-	if (posy % 2 == 0 || snake.y == 0 && snake.dx === 0){
-	right();
-  } else if (posy % 2 != 0 && snake.dx === 0){
-	left();
-  }
+  if (((posy+1) % 2 == 0 || posy == 0) && posy > 2 && posy < 23){
+	  if (((25*(posy+1))+((25*(posy+1))-id)) < (aid-5) && (625-(((25*posy)+((25*posy)-id)+1))) > (snake.cells.length + 2) && snake.dy === 0){
+	  	down();
+	  	console.log("ffs");
+	  }
+  }else if ((posy+1) % 2 != 0 && posy > 2 && posy < 23){
+	  if (((25*(posy+1))+((25*(posy+1))-id)+100) < (aid-5) && (625-(((25*posy)+((25*posy)-id)+101))) > (snake.cells.length + 2) && snake.dy === 0){
+	  	down();
+	  	console.log("second");
+	}else if (posx < 25 && posx > 1 && posy < 23 && posy > 1){
+	  if (posy % 2 == 0 || snake.y == 0 && snake.dx === 0){
+	    right();
+    } else if (posy % 2 != 0 && snake.dx === 0){
+	    left();
+    }
   }
   console.log("appleid["+aid+"]calculatedpos["+((25*posy)+((25*posy)-id))+"]");
   //console.log(snake.cells.length);
   
   }
   //ai
-  if (id%25 == 0 && id / 25 % 2 != 0 && id > 1 && id != 625){
+  if (id%25 == 0 && id / 25 % 2 != 0 && id > 1 && id != 625 && posy < 23){
 	down();
-  }else if((id-1)%25 == 0 && (id-1) / 25 % 2 != 0 && id > 2 && id < 576){
+  }else if((id-1)%25 == 0 && (id-1) / 25 % 2 != 0 && id > 2 && posy < 23){
 	left();
   }
-  if ((id+1)%50 == 0){
+  if ((id+1)%50 == 0 && posy < 23){
   down();
-  }else if ((id-2)%50 == 0 && id < 600){
+  }else if ((id-2)%50 == 0 && posy < 23){
   right();
   }
-  if (id == 576){
-  down();
-  }
-  if (id == 625){
+
+  var checker = getRandomInt(0, 100);
+
+  if (id == 576 && checker < 50){
   left();
   }
-  if (id == 624){
-  up();
-  }
-  if (id == 577){
+  if (id == 625 && checker <= 100){
   left();
   }
-  if (id == 578){
-  down();
-  }
-  if (id == 623){
-  left();
-  }
-  if (id == 622){
-  up();
-  }
-  if (id == 579){
-  left();
-  }
-  if (id == 580){
-  down();
-  }
-  if (id == 621){
-  left();
-  }
-  if (id == 581){
-  left();
-  }
-  if (id == 582){
-  down();
-  }
-  if (id == 620){
-  up();
-  }
-  if (id == 619){
-  left();
-  }
-  if (id == 583){
-  left();
-  }
-  if (id == 584){
-  down();
-  }
-  if (id == 618){
-  up();
-  }
-  if (id == 617){
-  left();
-  }
-  if (id == 585){
-  left();
-  }
-  if (id == 586){
-  down();
-  }
-  if (id == 616){
-  up();
-  }
-  if (id == 615){
-  left();
-  }
-  if (id == 587){
-  left();
-  }
-  if (id == 588){
-  down();
-  }
-  if (id == 614){
-  up();
-  }
-  if (id == 613){
-  left();
-  }
-  if (id == 589){
-  left();
-  }
-  if (id == 590){
-  down();
-  }
-  if (id == 612){
-  up();
-  }
-  if (id == 611){
-  left();
-  }
-  if (id == 591){
-  left();
-  }
-  if (id == 592){
-  down();
-  }
-  if (id == 610){
-  up();
-  }
-  if (id == 609){
-  left();
-  }
-  if (id == 593){
-  left();
-  }
-  if (id == 594){
-  down();
-  }
-  if (id == 608){
-  up();
-  }
-  if (id == 607){
-  left();
-  }
-  if (id == 595){
-  left();
-  }
-  if (id == 596){
-  down();
-  }
-  if (id == 606){
-  up();
-  }
-  if (id == 605){
-  left();
-  }
-  if (id == 597){
-  left();
-  }
-  if (id == 598){
-  down();
-  }
-  if (id == 604){
-  up();
-  }
-  if (id == 603){
-  left();
-  }
-  if (id == 602 && checker == 0){
-	checker = 1;
-  } else if (id == 602 && checker == 1){
-	checker = 0;
-		up();
-  }
-  if (id == 599){
-	left();
-  }
-  if (id == 601){
+  if (id == 601 && snake.dy === 0){
   up();
   }
   if (id == 600 && snake.dy === 0){
