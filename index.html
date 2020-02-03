@@ -195,17 +195,26 @@ function loop() {
 	aposx = 25-(apple.x/grid);
   }
   var aid = aposx+(aposy*25);
+  var dte;
+  var dta;
+  var length1;
   console.log(id);
   pos[id] = 1;
-  if (((posy+1) % 2 == 0 || posy == 0) && posy > 2 && posy < 23){
+  if (((posy+1) % 2 == 0 || posy == 0) && posy > 0 && posy < 23){
+      dte = (625-(((25*posy)+((25*posy)-id)+1)));
+      dta = dte + aid;
+      length1 = snake.cells.length;
 	  if (((25*(posy+1))+((25*(posy+1))-id)) < (aid-5) && (625-(((25*posy)+((25*posy)-id)+1))) > (snake.cells.length + 2) && snake.dy === 0){
 	  	down();
-	  	console.log("ffs");
-	  }
+	  	console.log("Ai1");
+	  }else if (aid < id && dta > length1+2 && snake.dy === 0){
+        down();
+	  	console.log("AiAbove");
+      }
   }else if ((posy+1) % 2 != 0 && posy > 2 && posy < 23){
 	  if (((25*(posy+1))+((25*(posy+1))-id)+100) < (aid-5) && (625-(((25*posy)+((25*posy)-id)+101))) > (snake.cells.length + 2) && snake.dy === 0){
 	  	down();
-	  	console.log("second");
+	  	console.log("Ai2");
 	}else if (posx < 25 && posx > 1 && posy < 23 && posy > 1){
 	  if (posy % 2 == 0 || snake.y == 0 && snake.dx === 0){
 	    right();
